@@ -2,9 +2,9 @@
 
 ## Commit Proposal
 
-Matriculation Number: <to be filled by student>
+Matriculation Number: 05-721-436
 
-Project idea short description: 
+Project idea short description: FHNW Module Rating Platform
 
 
 ## Project confirmation
