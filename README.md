@@ -6,6 +6,10 @@ Matriculation Number: 05-721-436
 
 Project idea short description: FHNW Module Rating Platform
 
+As is known, modules at the FHNW vary in quality. The website lists modules available
+at the FHNW and students can up/downvote them. To do so, they need to register with
+a valid FHNW email address.
+
 
 ## Project confirmation
 
