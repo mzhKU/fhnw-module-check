@@ -1,4 +1,4 @@
-package mvc
+package webec
 
 class Professor {
 

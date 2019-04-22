@@ -1,4 +1,4 @@
-package mvc
+package webec
 
 import grails.testing.gorm.DomainUnitTest
 import spock.lang.Specification
