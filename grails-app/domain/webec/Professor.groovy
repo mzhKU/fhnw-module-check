@@ -7,4 +7,9 @@ class Professor {
     static constraints = {
         name blank:false
     }
+
+    @Override
+    String toString() {
+        return name
+    }
 }
