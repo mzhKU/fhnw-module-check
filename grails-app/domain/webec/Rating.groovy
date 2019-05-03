@@ -11,7 +11,9 @@ class Rating {
                         student:  Student,
                         module:   Module]
 
-    static constraints = { }
+    static constraints = {
+        upvote(unique: ['professor', 'student', 'module'])
+    }
 
     String toString() { "$module $professor $student $upvote" }
 }
