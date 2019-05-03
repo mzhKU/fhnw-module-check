@@ -13,7 +13,7 @@ a valid FHNW email address.
 
 ## Project confirmation
 
-< to be filled by lecturer>
+re-confirming afte re-setup of the repo. D. König
 
 
 ## Project delivery <to be filled by student>
