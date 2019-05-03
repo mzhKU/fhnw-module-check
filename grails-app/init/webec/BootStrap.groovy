@@ -13,8 +13,8 @@ class BootStrap {
         Professor p1 = new Professor(name: "Tom").save(flush:true, failOnError:true)
         Professor p2 = new Professor(name: "Tim").save(flush:true, failOnError:true)
 
-        Module m1 = new Module(title: p1, professor: "mod 1", votes: null)
-        Module m2 = new Module(title: p1, professor: "mod 2", votes: null)
+        Module m1 = new Module(title: "BSYS");
+        Module m2 = new Module(title: "VANA");
 
     }
     def destroy = {
