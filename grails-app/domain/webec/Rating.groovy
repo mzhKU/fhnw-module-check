@@ -2,11 +2,14 @@ package webec
 
 class Rating {
 
-    Module module
-    Student student
     Professor professor
-    boolean upvoted
+    Student   student
+    Module    module
+    boolean   upvoted
 
+    static belongsTo = [professor:Professor,
+                        student:  Student,
+                        module:   Module]
 
     static constraints = {
     }
