@@ -13,8 +13,11 @@
 </head>
 
 <body>
+    <!--
     <form action="/modules/Modules.gsp" style="border: 1px solid grey;">
         <input type="button" value="Vote">
     </form>
+    -->
+    <div>Test</div>
 </body>
 </html>

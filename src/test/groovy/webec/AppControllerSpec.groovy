@@ -3,7 +3,7 @@ package webec
 import grails.testing.web.controllers.ControllerUnitTest
 import spock.lang.Specification
 
-class ModulesControllerSpec extends Specification implements ControllerUnitTest<ModulesController> {
+class AppControllerSpec extends Specification implements ControllerUnitTest<AppController> {
 
     def setup() {
     }

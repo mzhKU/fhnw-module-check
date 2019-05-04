@@ -7,4 +7,9 @@ class Student {
     static constraints = {
         name nullable: true
     }
+
+    @Override
+    String toString() {
+        return name
+    }
 }

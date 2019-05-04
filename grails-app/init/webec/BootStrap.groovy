@@ -16,11 +16,11 @@ class BootStrap {
         Module bsys = new Module(title: "BSYS").save(flush: true, failOnError: true);
         Module vana = new Module(title: "VANA").save(flush: true, failOnError: true);
 
-        Student s1 = new Student().save(flush: true, failOnError: true)
-        Student s2 = new Student().save(flush: true, failOnError: true)
-        Student s3 = new Student().save(flush: true, failOnError: true)
-        Student s4 = new Student().save(flush: true, failOnError: true)
-        Student s5 = new Student().save(flush: true, failOnError: true)
+        Student s1 = new Student(name: "s1").save(flush: true, failOnError: true)
+        Student s2 = new Student(name: "s2").save(flush: true, failOnError: true)
+        Student s3 = new Student(name: "s3").save(flush: true, failOnError: true)
+        Student s4 = new Student(name: "s4").save(flush: true, failOnError: true)
+        Student s5 = new Student(name: "s5").save(flush: true, failOnError: true)
 
         // BSYS.p1 has 1+1-1 = +1 Rating
         Rating r1 = new Rating(module: bsys, professor: p1, student: s1, upvote: true).save(flush: true, failOnError: true)
