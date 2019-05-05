@@ -24,6 +24,7 @@ class BootStrap {
 
         // BSYS.p1 has 1+1-1 = +1 Rating
         Rating r1 = new Rating(module: bsys, professor: p1, student: s1, upvote: true).save(flush: true, failOnError: true)
+        // Rating r8 = new Rating(module: bsys, professor: p1, student: s1, upvote: true).save(flush: true, failOnError: true)
         Rating r2 = new Rating(module: bsys, professor: p1, student: s2, upvote: true).save(flush: true, failOnError: true)
         Rating r3 = new Rating(module: bsys, professor: p1, student: s3, upvote: false).save(flush: true, failOnError: true)
 

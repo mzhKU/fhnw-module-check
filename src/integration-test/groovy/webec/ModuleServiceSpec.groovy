@@ -72,3 +72,4 @@ class ModuleServiceSpec extends Specification {
         module.id != null
     }
 }
+

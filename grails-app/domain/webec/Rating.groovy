@@ -15,5 +15,9 @@ class Rating {
         upvote(unique: ['professor', 'student', 'module'])
     }
 
-    String toString() { "$module.title $professor.name $student.name $upvote" }
+    /*
+    String toString() {
+        "$module.title $professor.name $student.name $upvote"
+    }
+    */
 }
