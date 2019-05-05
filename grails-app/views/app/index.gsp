@@ -14,12 +14,24 @@
     </head>
     <body>
 
-        <ul>
-            <g:each var="i" in="${ratings}">
-                <li>${i}</li>
-            </g:each>
-        </ul>
+        <header>
+            <p>User: ${student}</p>
+        </header>
 
+
+        <main class="container">
+
+            <ul class="row">
+                <g:each var="i" in="${ratings}">
+                    <li>${i}</li>
+                </g:each>
+            </ul>
+
+            <div class="row">
+                <p>Total number of ratings: ${ratings.size()}</p>
+            </div>
+
+        </main>
     </body>
 </html>
 
