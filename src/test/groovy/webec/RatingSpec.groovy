@@ -2,48 +2,61 @@ package webec
 
 import grails.testing.gorm.DomainUnitTest
 import spock.lang.Specification
+import grails.test.hibernate.HibernateSpec
 
+@SuppressWarnings("MethodName")
 class RatingSpec extends Specification implements DomainUnitTest<Rating> {
 
-    Professor professor1
-    Student   student1
-    Module    module1
-    Rating    rating1
+    Professor p1 = new Professor(name: "Test Professor 1").save(flush: true, failOnError: true)
+    Professor p2 = new Professor(name: "Test Professor 2").save(flush: true, failOnError: true)
+    Student   s1 = new Student(name: "s1").save(flush: true, failOnError: true)
+    Module    m1 = new Module(title: "Test Module 01").save(flush: true, failOnError: true)
 
-    def setup() {
-        mockDomain Module
-        mockDomain Professor
-        mockDomain Student
-        mockDomain Rating
+    def "Two same ratings are invalid"() {
 
-        professor1 = new Professor(name: "TestProfessor 01")
-        student1   = new Student(name: "TestStudent 01")
-        module1    = new Module(title: "TestModule 01")
 
-        rating1    = new Rating(professor: professor1, student: student1, module: module1, upvote: true)
+        // ---------- Test 1 --------------------------------------------------------
+        when: "A rating has a unique combination of prof student module vote"
+        def  rating01 = new Rating(professor: p1, student: s1, module: m1, upvote: true)
+
+        then: "it is a valid instances"
+        rating01.validate(['upvote'])
+
+        and: "can be saved"
+        rating01.save()
+
+        and: "there is now one rating in the database"
+        Rating.all.size() == 1
+        // ----------------------------------------------------------------------------
+
+
+        // ---------- Test 2 --------------------------------------------------------
+        when: "A second rating has the same parameters"
+        def rating02 = new Rating(professor: p1, student: s1, module: m1, upvote: true)
+
+        and: "they it is saved"
+        rating02.save()
+
+        then: "the upvote value of the second rating is not valid"
+        !rating02.validate(['upvote'])
+        // ----------------------------------------------------------------------------
+
+
+        // ---------- Test 3 --------------------------------------------------------
+        when: "A third rating has a different professor"
+        def rating03 = new Rating(professor: p2, student: s1, module: 1, upvote: true)
+
+        then: "it is valid"
+        rating03.validate(['upvote'])
+
+        and: "it can be saved"
+        rating03.save()
+
+        and: "there are now two ratings in the database"
+        Rating.all.size() == 2
+        // ----------------------------------------------------------------------------
     }
 
-    void "test double_vote_up"() {
-        when:
-            def init = { servletContext ->
-                rating1.save(flush: true)
-                // rating1.save(flush: true)
-            }
 
-        then:
-            true == true
-
-    }
-
-    void "test something"() {
-        expect:"fix me"
-            true == true
-    }
-
-    def cleanup() {
-        professor1.delete()
-        student1.delete()
-        module1.delete()
-    }
-
+    def cleanup() {}
 }
