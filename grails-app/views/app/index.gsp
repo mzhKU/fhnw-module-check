@@ -22,13 +22,13 @@
         <main class="container">
 
             <ul class="row">
-                <g:each var="i" in="${ratings}">
-                    <li>${i}</li>
+                <g:each var="module" in="${modules}">
+                    <li>${module.title}</li>
                 </g:each>
             </ul>
 
             <div class="row">
-                <p>Total number of ratings: ${ratings.size()}</p>
+                <p>Total number of modules: ${totalNumberOfModules}</p>
             </div>
 
         </main>

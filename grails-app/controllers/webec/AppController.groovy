@@ -6,6 +6,8 @@ class AppController {
         // render view: 'index', model: [student: "Toni", ratings: Rating.all]
 
         // 'respond' can return different response formats: JSON, XML, ...
-        respond([student: "Toni", ratings: Rating.all])
+        // '[...]' is the returned model
+        respond([student: "Toni", modules: Module.all,
+                 totalNumberOfModules: Module.all.size()])
     }
 }
