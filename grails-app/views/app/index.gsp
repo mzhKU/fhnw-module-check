@@ -25,13 +25,6 @@
                 <g:each var="module" in="${modules}">
                     <li>
                         ${module.title}
-                        <ul>
-                            <g:each var="p" in="${module.professors}">
-                                <li>
-                                    ${p.name}
-                                </li>
-                            </g:each>
-                        </ul>
                     </li>
                 </g:each>
             </ul>
