@@ -22,6 +22,7 @@ class BootStrap {
 
         Module bsys = new Module(title: "BSYS").save(flush: true, failOnError: true);
         Module vana = new Module(title: "VANA").save(flush: true, failOnError: true);
+        Module mgli = new Module(title: "MGLI").save(flush: true, failOnError: true);
 
         Student s1 = new Student(name: "s1").save(flush: true, failOnError: true)
         Student s2 = new Student(name: "s2").save(flush: true, failOnError: true)
@@ -44,6 +45,8 @@ class BootStrap {
 
         save(new Teaching(professor: p1, module: bsys))
         save(new Teaching(professor: p2, module: bsys))
+        save(new Teaching(professor: p1, module: vana))
+        save(new Teaching(professor: p2, module: mgli))
 
     }
 

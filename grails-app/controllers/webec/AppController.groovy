@@ -9,7 +9,9 @@ class AppController {
 
         // Map<String, List<String>> teachings = new HashMap<>()
 
-        System.out.println(Teaching.all)
+        def teachings = Teaching.all.groupBy( { teaching -> teaching.module.title } )
+
+        System.out.println(teachings)
 
         respond(
                 [student:              "Toni",
