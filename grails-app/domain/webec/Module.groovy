@@ -2,9 +2,11 @@ package webec
 
 import grails.rest.Resource
 
-@Resource(uri="app")
 class Module {
     String title
+
+    @Override
+    String toString() { return title }
 
     static constraints  = {
         title unique:true

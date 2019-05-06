@@ -22,9 +22,9 @@
         <main class="container">
 
             <ul class="row">
-                <g:each var="module" in="${modules}">
+                <g:each var="teaching" in="${teachings}">
                     <li>
-                        ${module.title}
+                        ${teaching.module} ${teaching.professor}
                     </li>
                 </g:each>
             </ul>
