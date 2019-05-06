@@ -6,6 +6,7 @@ class AppController {
 
         for(Module m: Module.all) {
             System.out.println(m.title)
+            System.out.println(m.professors)
         }
 
         // 'respond' can return different response formats: JSON, XML, ...

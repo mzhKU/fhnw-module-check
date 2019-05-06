@@ -13,8 +13,15 @@ class BootStrap {
         Professor p1 = new Professor(name: "Tom").save(flush: true, failOnError: true)
         Professor p2 = new Professor(name: "Tim").save(flush: true, failOnError: true)
 
-        Module bsys = new Module(title: "BSYS").save(flush: true, failOnError: true);
-        Module vana = new Module(title: "VANA").save(flush: true, failOnError: true);
+        List<Professor> bsysProfessors = new ArrayList<>()
+        bsysProfessors.add(p1)
+        bsysProfessors.add(p2)
+
+        List<Professor> vanaProfessors = new ArrayList<>()
+        vanaProfessors.add(p2)
+
+        Module bsys = new Module(title: "BSYS", professors: bsysProfessors).save(flush: true, failOnError: true);
+        Module vana = new Module(title: "VANA", professors: vanaProfessors).save(flush: true, failOnError: true);
 
         Student s1 = new Student(name: "s1").save(flush: true, failOnError: true)
         Student s2 = new Student(name: "s2").save(flush: true, failOnError: true)
@@ -34,7 +41,10 @@ class BootStrap {
 
         Rating r6 = new Rating(module: vana, professor: p1, student: s4, upvote: true).save(flush: true, failOnError: true)
         Rating r7 = new Rating(module: vana, professor: p2, student: s5, upvote: true).save(flush: true, failOnError: true)
+    }
 
+    static <Domain> Domain save(Domain domainObject) {
+        domainObject.save(failOnError: true, flush:true)
     }
 
     def destroy = {
