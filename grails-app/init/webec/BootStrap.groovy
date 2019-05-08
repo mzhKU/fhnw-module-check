@@ -42,6 +42,7 @@ class BootStrap {
 
         Rating r6 = new Rating(module: vana, professor: p1, student: s4, upvote: true).save(flush: true, failOnError: true)
         Rating r7 = new Rating(module: vana, professor: p2, student: s5, upvote: true).save(flush: true, failOnError: true)
+        Rating r8 = new Rating(module: mgli, professor: p2, student: s1, upvote: true).save(flush: true, failOnError: true)
 
         save(new Teaching(professor: p1, module: bsys))
         save(new Teaching(professor: p2, module: bsys))

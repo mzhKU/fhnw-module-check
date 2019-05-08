@@ -25,6 +25,15 @@ class AppController {
          --------------------------------------
         */
 
+        for(Module m : Module.all) {
+            List<Professor> professorsOfModule = Teaching.findAllByModule(m).professor
+            for(Professor p : professorsOfModule) {
+                def votesMP = Rating.findAllByModuleAndProfessor(m, p).upvote
+                System.out.println(m.title + " - " + p.name + ": " + votesMP.stream().filter({v -> v==true}).count())
+                // long trueVotesMP = votesMP.stream().filter({v -> v==true}).count()
+            }
+        }
+
         Module bsys = Module.findByTitle("BSYS")
         Module vana = Module.findByTitle("VANA")
         // Professor p1 = Professor.findByName("Tom")
@@ -37,6 +46,9 @@ class AppController {
 
         long trueVotesVana = votesVana.stream().filter({ v -> v == true }).count()
         System.out.println(trueVotesVana)
+
+        /*
+         */
 
 
 
