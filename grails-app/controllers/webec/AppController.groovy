@@ -1,5 +1,7 @@
 package webec
 
+import java.util.stream.Stream
+
 class AppController {
 
     def index() {
@@ -22,14 +24,20 @@ class AppController {
                [...]
          --------------------------------------
         */
-        // Professor p1 = new Professor("p1").save(flush: true)
-        // Module bsys  = new Module("bsys").save(flush: true)
 
         Module bsys = Module.findByTitle("BSYS")
-        Professor p1 = Professor.findByName("Tom")
-        def voteBsysP1 = Rating.findByModuleAndProfessor(bsys, p1).upvote
+        Module vana = Module.findByTitle("VANA")
+        // Professor p1 = Professor.findByName("Tom")
 
-        System.out.println(voteBsysP1)
+        // def voteBsysP1 = Rating.findByModuleAndProfessor(bsys, p1).upvote
+        // System.out.println(voteBsysP1)
+
+        // def votesBsys = Rating.findAllByModule(bsys).upvote
+        def votesVana= Rating.findAllByModule(vana).upvote
+
+        long trueVotesVana = votesVana.stream().filter({ v -> v == true }).count()
+        System.out.println(trueVotesVana)
+
 
 
         // 'respond' can return different response formats: JSON, XML, ...
