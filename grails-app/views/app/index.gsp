@@ -24,7 +24,10 @@
             <ul class="row">
                 <g:each var="teaching" in="${teachings}">
                     <li>
-                        ${teaching.module} ${teaching.professor}
+                        ${teaching.module} ${teaching.professor} ${teachingUpvotes.get(teaching)}
+                        <form action="/app/index" method="get" style="display: inline">
+                            <input type="checkbox" name="upvote">
+                        </form>
                     </li>
                 </g:each>
             </ul>
