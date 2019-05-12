@@ -11,6 +11,12 @@
     <head>
         <meta name="layout" content="main"/>
         <title>Home Page</title>
+
+        <style>
+            ul {
+                list-style: none;
+            }
+        </style>
     </head>
     <body>
 
@@ -24,10 +30,25 @@
             <ul class="row">
                 <g:each var="teaching" in="${teachings}">
                     <li>
-                        ${teaching.module} ${teaching.professor} ${teachingUpvotes.get(teaching)}
-                        <form action="/app/index" method="get" style="display: inline">
-                            <input type="checkbox" name="upvote">
-                        </form>
+                        <table>
+                            <tr>
+                                <td>${teaching.module}</td>
+                                <td>${teaching.professor}</td>
+                                <td>${teachingUpvotes.get(teaching)}</td>
+                                <td>
+                                    <form action="/app/index" method="get" style="display: inline">
+                                        <input type="submit" value="+1">
+                                        <input type="hidden" value="+1" name="voteValue">
+                                    </form>
+                                </td>
+                                <td>
+                                    <form action="/app/index" method="get" style="display: inline">
+                                    <input type="submit" value="-1">
+                                    <input type="hidden" value="-1" name="voteValue">
+                                </form>
+                                </td>
+                            </tr>
+                        </table>
                     </li>
                 </g:each>
             </ul>

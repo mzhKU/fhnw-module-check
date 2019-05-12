@@ -32,14 +32,6 @@ class AppController {
             teachingUpvotes.put(t, Rating.findAllByModuleAndProfessor(m, p).upvote.stream().filter({v -> v==true}).count())
         }
 
-        for(Module m : Module.all) {
-            List<Professor> professorsOfModule = Teaching.findAllByModule(m).professor
-            for(Professor p : professorsOfModule) {
-                def votesMP = Rating.findAllByModuleAndProfessor(m, p).upvote
-                System.out.println(m.title + " - " + p.name + ": " + votesMP.stream().filter({v -> v==true}).count())
-            }
-        }
-
         // 'respond' can return different response formats: JSON, XML, ...
         // '[...]' is the returned model
         respond(
