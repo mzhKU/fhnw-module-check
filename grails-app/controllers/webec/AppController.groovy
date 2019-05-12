@@ -27,6 +27,17 @@ class AppController {
         Map<Teaching, Integer> teachingUpvotes = new HashMap<>()
         System.out.println(params)
 
+        if(params.get("professor") != null) {
+            Professor pro = new Professor(name: params.get("professor"))
+            Module    mod = new Module(title: params.get("module"))
+            Boolean   vot = Boolean.valueOf(params.get("vote"))
+
+            // Default student before implementing security
+            Student   s = new Student(name: "s0")
+
+            new Rating(module: mod, professor: pro, student: s, upvote: vot).save(flush: true, failOnError: true)
+        }
+
         for(Teaching t: Teaching.all) {
             Professor p = t.professor
             Module    m = t.module
