@@ -20,10 +20,11 @@
     </head>
     <body>
 
-        <header>
-            <p>User: ${student}</p>
+        <header class="container">
+            <div class="row">
+                <p>User: ${student}</p>
+            </div>
         </header>
-
 
         <main class="container">
 
@@ -34,10 +35,9 @@
                             <tr>
                                 <td>${teaching.module}</td>
                                 <td>${teaching.professor}</td>
-                                <td>${teachingUpvotes.get(teaching)}</td>
                                 <td>
                                     <form action="/app/index" method="get" style="display: inline">
-                                        <input type="submit" value="1" name="vote">
+                                        <input type="submit" value="+1" name="vote">
                                         <input type="hidden" value="${teaching.module}" name="module">
                                         <input type="hidden" value="${teaching.professor}" name="professor">
                                     </form>
@@ -56,7 +56,7 @@
             </ul>
 
             <div class="row">
-                <p>Total number of modules: ${totalNumberOfModules}</p>
+                <p>Total number of ratings: ${ratings.size()}</p>
             </div>
 
         </main>

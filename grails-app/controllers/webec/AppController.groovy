@@ -22,44 +22,37 @@ import java.util.stream.Stream
 
 class AppController {
 
+    static List<Integer> tss = new ArrayList<>()
+
     def index() {
 
-        Map<Teaching, Integer> teachingUpvotes = new HashMap<>()
-        System.out.println(params)
-
         // Prevent saving of a new rating on initial load when no values are submitted
-        if(params.get("professor") != null) {
-            Professor professor  = new Professor(name: params.get("professor"))
-            Module    module     = new Module(title: params.get("module"))
-            int       vote       = Integer.valueOf(params.get("vote"))
+        if(null != params.get("professor")) {
+            Professor p = Professor.findByName(params.get("professor"))
+            Module    m = Module.findByTitle(params.get("module"))
+            int    vote = Integer.valueOf(params.get("vote"))
 
-            // Default student before implementing authentication
-            Student s = new Student(name: "s0")
+            // Default student before implementing authentication and authorization
+            Student s = new Student(name: "s0").save(flush: true, failOnError: true)
 
-            System.out.println("professor: " + professor)
-            System.out.println("module: " + module)
-            System.out.println("vote: " + vote)
+            new Rating(module: m,
+                    professor: p,
+                      student: s,
+                         vote: vote
+            ).save(flush: true, failOnError: true)
 
-            // Why is the new rating not saved?
-            new Rating(module: module, professor: professor, student: s, vote: vote).save(flush: true, failOnError: true)
-            System.out.println(Rating.findAllByModuleAndProfessor(module, professor).vote.stream().mapToInt({i -> i.intValue()}).sum())
         }
-
-
-        for(Teaching t: Teaching.all) {
-            Professor p = t.professor
-            Module    m = t.module
-            teachingUpvotes.put(t, Rating.findAllByModuleAndProfessor(m, p).vote.stream().mapToInt({i -> i.intValue()}).sum())
-        }
-
-        // 'respond' can return different response formats: JSON, XML, ...
-        // '[...]' is the returned model
-        respond(
-                [student:              "Toni",
-                 modules:              Module.all,
-                 totalNumberOfModules: Module.all.size(),
-                 teachings:            Teaching.all,
-                 teachingUpvotes:      teachingUpvotes
-        ])
+        render(view:'index', model:[student: "Toni", teachings: Teaching.all, ratings: Rating.all])
     }
 }
+
+// System.out.println("Professor: " + p.name)
+// System.out.println("Module: " + m.title)
+// System.out.println("Vote: " + vote)
+
+// Map<Teaching, Integer> teachingUpvotes = new HashMap<>()
+
+// for(Teaching t: Teaching.all) {
+//     teachingUpvotes.put(t, Rating.findAllByModuleAndProfessor(m, p).vote.stream().mapToInt({i -> i.intValue()}).sum())
+// }
+

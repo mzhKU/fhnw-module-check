@@ -6,7 +6,7 @@ class Rating {
     Student   student
     Module    module
     // boolean   upvote
-    int       vote
+    int vote
 
     static belongsTo = [professor:Professor,
                         student:  Student,
