@@ -37,15 +37,17 @@
                                 <td>${teachingUpvotes.get(teaching)}</td>
                                 <td>
                                     <form action="/app/index" method="get" style="display: inline">
-                                        <input type="submit" value="+1">
-                                        <input type="hidden" value="+1" name="voteValue">
+                                        <input type="submit" value="+1" name="vote">
+                                        <input type="hidden" value="${teaching.module}" name="module">
+                                        <input type="hidden" value="${teaching.professor}" name="professor">
                                     </form>
                                 </td>
                                 <td>
                                     <form action="/app/index" method="get" style="display: inline">
-                                    <input type="submit" value="-1">
-                                    <input type="hidden" value="-1" name="voteValue">
-                                </form>
+                                        <input type="submit" value="-1" name="vote">
+                                        <input type="hidden" value="${teaching.module}" name="module">
+                                        <input type="hidden" value="${teaching.professor}" name="professor">
+                                    </form>
                                 </td>
                             </tr>
                         </table>

@@ -25,12 +25,15 @@ class AppController {
     def index() {
 
         Map<Teaching, Integer> teachingUpvotes = new HashMap<>()
+        System.out.println(params)
 
         for(Teaching t: Teaching.all) {
             Professor p = t.professor
             Module    m = t.module
             teachingUpvotes.put(t, Rating.findAllByModuleAndProfessor(m, p).upvote.stream().filter({v -> v==true}).count())
         }
+
+
 
         // 'respond' can return different response formats: JSON, XML, ...
         // '[...]' is the returned model
