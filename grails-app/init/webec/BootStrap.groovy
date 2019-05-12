@@ -31,18 +31,18 @@ class BootStrap {
         Student s5 = new Student(name: "s5").save(flush: true, failOnError: true)
 
         // BSYS.p1 has 1+1-1 = +1 Rating
-        Rating r1 = new Rating(module: bsys, professor: p1, student: s1, upvote: true).save(flush: true, failOnError: true)
+        Rating r1 = new Rating(module: bsys, professor: p1, student: s1, vote: 1).save(flush: true, failOnError: true)
         // Rating r8 = new Rating(module: bsys, professor: p1, student: s1, upvote: true).save(flush: true, failOnError: true)
-        Rating r2 = new Rating(module: bsys, professor: p1, student: s2, upvote: true).save(flush: true, failOnError: true)
-        Rating r3 = new Rating(module: bsys, professor: p1, student: s3, upvote: false).save(flush: true, failOnError: true)
+        Rating r2 = new Rating(module: bsys, professor: p1, student: s2, vote: 1).save(flush: true, failOnError: true)
+        Rating r3 = new Rating(module: bsys, professor: p1, student: s3, vote: -1).save(flush: true, failOnError: true)
 
         // BSYS.p2 has -1-1 = -2 Rating
-        Rating r4 = new Rating(module: bsys, professor: p2, student: s1, upvote: false).save(flush: true, failOnError: true)
-        Rating r5 = new Rating(module: bsys, professor: p2, student: s2, upvote: false).save(flush: true, failOnError: true)
+        Rating r4 = new Rating(module: bsys, professor: p2, student: s1, vote: -1).save(flush: true, failOnError: true)
+        Rating r5 = new Rating(module: bsys, professor: p2, student: s2, vote: -1).save(flush: true, failOnError: true)
 
-        Rating r6 = new Rating(module: vana, professor: p1, student: s4, upvote: true).save(flush: true, failOnError: true)
-        Rating r7 = new Rating(module: vana, professor: p2, student: s5, upvote: true).save(flush: true, failOnError: true)
-        Rating r8 = new Rating(module: mgli, professor: p2, student: s1, upvote: true).save(flush: true, failOnError: true)
+        Rating r6 = new Rating(module: vana, professor: p1, student: s4, vote: 1).save(flush: true, failOnError: true)
+        Rating r7 = new Rating(module: vana, professor: p2, student: s5, vote: 1).save(flush: true, failOnError: true)
+        Rating r8 = new Rating(module: mgli, professor: p2, student: s1, vote: 1).save(flush: true, failOnError: true)
 
         save(new Teaching(professor: p1, module: bsys))
         save(new Teaching(professor: p2, module: bsys))

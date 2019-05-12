@@ -13,7 +13,7 @@ class Module {
     String toString() { "$title" }
 
     static constraints  = {
-        title unique:true
+        // title unique:true
         title blank: false
         title nullable: true
     }

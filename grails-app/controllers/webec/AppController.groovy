@@ -27,24 +27,30 @@ class AppController {
         Map<Teaching, Integer> teachingUpvotes = new HashMap<>()
         System.out.println(params)
 
+        // Prevent saving of a new rating on initial load when no values are submitted
         if(params.get("professor") != null) {
-            Professor pro = new Professor(name: params.get("professor"))
-            Module    mod = new Module(title: params.get("module"))
-            Boolean   vot = Boolean.valueOf(params.get("vote"))
+            Professor professor  = new Professor(name: params.get("professor"))
+            Module    module     = new Module(title: params.get("module"))
+            int       vote       = Integer.valueOf(params.get("vote"))
 
-            // Default student before implementing security
-            Student   s = new Student(name: "s0")
+            // Default student before implementing authentication
+            Student s = new Student(name: "s0")
 
-            new Rating(module: mod, professor: pro, student: s, upvote: vot).save(flush: true, failOnError: true)
+            System.out.println("professor: " + professor)
+            System.out.println("module: " + module)
+            System.out.println("vote: " + vote)
+
+            // Why is the new rating not saved?
+            new Rating(module: module, professor: professor, student: s, vote: vote).save(flush: true, failOnError: true)
+            System.out.println(Rating.findAllByModuleAndProfessor(module, professor).vote.stream().mapToInt({i -> i.intValue()}).sum())
         }
+
 
         for(Teaching t: Teaching.all) {
             Professor p = t.professor
             Module    m = t.module
-            teachingUpvotes.put(t, Rating.findAllByModuleAndProfessor(m, p).upvote.stream().filter({v -> v==true}).count())
+            teachingUpvotes.put(t, Rating.findAllByModuleAndProfessor(m, p).vote.stream().mapToInt({i -> i.intValue()}).sum())
         }
-
-
 
         // 'respond' can return different response formats: JSON, XML, ...
         // '[...]' is the returned model
