@@ -40,7 +40,11 @@ class AppController {
             System.out.println("Rating added: " + r.module.title + " " + r.professor.name + " " + r.vote)
         }
 
-        render(view:'index', model:[student: "Toni", teachings: Teaching, ratings: Rating.all])
+        for(Teaching t : Teaching.all) {
+            t.voteValue = Rating.findAllByModuleAndProfessor(t.module, t.professor).vote.sum()
+        }
+
+        render(view:'index', model:[student: "Toni", teachings: Teaching, ratings: Rating])
     }
 }
 

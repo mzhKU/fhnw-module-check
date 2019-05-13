@@ -35,6 +35,8 @@
                             <tr>
                                 <td>${t.module}</td>
                                 <td>${t.professor}</td>
+                                <td>${t.voteValue}</td>
+
                                 <td>
                                     <form action="/app/index" method="get" style="display: inline">
                                         <input type="submit" value="+1" name="vote">
@@ -56,7 +58,7 @@
             </ul>
 
             <div class="row">
-                <p>Total number of ratings: ${ratings.size()}</p>
+                <p>Total number of ratings: ${ratings.all.size()}</p>
             </div>
 
         </main>
