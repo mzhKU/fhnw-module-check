@@ -33,6 +33,13 @@
                     <li>
                         <table>
                             <tr>
+                                <th>Module</th>
+                                <th>Professor</th>
+                                <th>Rating</th>
+                                <th>Upvote</th>
+                                <th>Downvote</th>
+                            </tr>
+                            <tr>
                                 <td>${t.module}</td>
                                 <td>${t.professor}</td>
                                 <td>${t.voteValue}</td>
