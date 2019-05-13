@@ -29,24 +29,24 @@
         <main class="container">
 
             <ul class="row">
-                <g:each var="teaching" in="${teachings}">
+                <g:each var="t" in="${teachings.all}">
                     <li>
                         <table>
                             <tr>
-                                <td>${teaching.module}</td>
-                                <td>${teaching.professor}</td>
+                                <td>${t.module}</td>
+                                <td>${t.professor}</td>
                                 <td>
                                     <form action="/app/index" method="get" style="display: inline">
                                         <input type="submit" value="+1" name="vote">
-                                        <input type="hidden" value="${teaching.module}" name="module">
-                                        <input type="hidden" value="${teaching.professor}" name="professor">
+                                        <input type="hidden" value="${t.module}" name="module">
+                                        <input type="hidden" value="${t.professor}" name="professor">
                                     </form>
                                 </td>
                                 <td>
                                     <form action="/app/index" method="get" style="display: inline">
                                         <input type="submit" value="-1" name="vote">
-                                        <input type="hidden" value="${teaching.module}" name="module">
-                                        <input type="hidden" value="${teaching.professor}" name="professor">
+                                        <input type="hidden" value="${t.module}" name="module">
+                                        <input type="hidden" value="${t.professor}" name="professor">
                                     </form>
                                 </td>
                             </tr>

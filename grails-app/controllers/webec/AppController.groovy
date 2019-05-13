@@ -35,14 +35,12 @@ class AppController {
             // Default student before implementing authentication and authorization
             Student s = new Student(name: "s0").save(flush: true, failOnError: true)
 
-            new Rating(module: m,
-                    professor: p,
-                      student: s,
-                         vote: vote
-            ).save(flush: true, failOnError: true)
-
+            Rating r = new Rating(module: m, professor: p, student: s, vote: vote )
+            r.save(flush: true, failOnError: true)
+            System.out.println("Rating added: " + r.module.title + " " + r.professor.name + " " + r.vote)
         }
-        render(view:'index', model:[student: "Toni", teachings: Teaching.all, ratings: Rating.all])
+
+        render(view:'index', model:[student: "Toni", teachings: Teaching, ratings: Rating.all])
     }
 }
 
