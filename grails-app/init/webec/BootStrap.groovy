@@ -11,19 +11,23 @@ class BootStrap {
     def init = { servletContext ->
 
         // Guard clause: prevent bootstrap objects in production
+        // if(Environment.current == Environment.PRODUCTION) return;
 
 
-        SecRole adminRole = save(SecRole.findOrCreateWhere(authority: 'ROLE_ADMIN'))
+        SecRole adminRole = save(SecRole.findOrCreateWhere(authority: SecRole.ADMIN))
+        SecRole guestRole = save(SecRole.findOrCreateWhere(authority: SecRole.GUEST))
 
-        if(Environment.current == Environment.PRODUCTION) return;
+        SecUser guest = save(new SecUser(username: 'guest', password: 'guest'))
+        SecUserSecRole.create(guest, guestRole, true)
+
 
         SecUser testUser = save(new SecUser(username: 'me', password: '1234'))
         SecUserSecRole.create(testUser, adminRole, true)
 
 
-        assert SecRole.count() == 1
-        assert SecUser.count() == 1
-        assert SecUserSecRole.count() == 1
+        assert SecRole.count() == 2
+        assert SecUser.count() == 2
+        assert SecUserSecRole.count() == 2
 
         Professor p1 = new Professor(name: "Tom").save(flush: true, failOnError: true)
         Professor p2 = new Professor(name: "Tim").save(flush: true, failOnError: true)

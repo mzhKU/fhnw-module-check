@@ -20,6 +20,12 @@ import java.util.stream.Stream
  --------------------------------------
 */
 
+
+
+import grails.plugin.springsecurity.annotation.Secured
+import webec.SecRole
+
+@Secured(SecRole.ADMIN)
 class AppController {
 
     static List<Integer> tss = new ArrayList<>()

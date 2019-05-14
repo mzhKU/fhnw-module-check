@@ -4,7 +4,10 @@
 grails.plugin.springsecurity.userLookup.userDomainClassName = 'webec.SecUser'
 grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'webec.SecUserSecRole'
 grails.plugin.springsecurity.authority.className = 'webec.SecRole'
-grails.plugin.springsecurity.controllerAnnotations.staticRules = [
+
+grails.plugin.springsecurity.logout.postOnly = false
+
+final statics = [
 	[pattern: '/',               access: ['permitAll']],
 	[pattern: '/error',          access: ['permitAll']],
 	[pattern: '/index',          access: ['permitAll']],
@@ -17,6 +20,8 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	[pattern: '/**/favicon.ico', access: ['permitAll']]
 ]
 
+grails.plugin.springsecurity.controllerAnnotations.staticRules = statics
+
 grails.plugin.springsecurity.filterChain.chainMap = [
 	[pattern: '/assets/**',      filters: 'none'],
 	[pattern: '/**/js/**',       filters: 'none'],
@@ -24,5 +29,15 @@ grails.plugin.springsecurity.filterChain.chainMap = [
 	[pattern: '/**/images/**',   filters: 'none'],
 	[pattern: '/**/favicon.ico', filters: 'none'],
 	[pattern: '/**',             filters: 'JOINED_FILTERS']
+]
+
+
+// config types are 'Annotation', 'Requestmap', or 'InterceptUrlMap'
+grails.plugin.springsecurity.securityConfigType = 'InterceptUrlMap'
+grails.plugin.springsecurity.interceptUrlMap = statics + [
+		[pattern: "/login/auth", access: ["permitAll"]],
+		[pattern: "/person/**" , access: ['ROLE_ADMIN']], // cannot use constant here :-(
+		[pattern: "/room/**"   , access: ['ROLE_ADMIN']],
+		[pattern: "/**"        , access: ['ROLE_ADMIN', 'ROLE_GUEST']],
 ]
 
