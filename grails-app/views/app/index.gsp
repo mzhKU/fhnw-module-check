@@ -16,7 +16,7 @@
 
         <header class="container">
             <div class="row">
-                <p>User: ${student}</p>
+                <p>User: ${studentName}</p>
             </div>
         </header>
 
@@ -30,7 +30,7 @@
                     <th>Upvote</th>
                     <th>Downvote</th>
                 </tr>
-                <g:each var="t" in="${teachings.all}">
+                <g:each var="t" in="${teachings}">
                     <tr>
                         <td>${t.module}</td>
                         <td>${t.professor}</td>
@@ -54,7 +54,7 @@
                 </g:each>
             </table>
             <div class="row">
-                <p>Total number of ratings: ${ratings.all.size()}</p>
+                <p>Total number of ratings: ${numberOfRatings}</p>
             </div>
         </main>
     </body>

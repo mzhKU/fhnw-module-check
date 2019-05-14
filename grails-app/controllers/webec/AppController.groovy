@@ -28,18 +28,21 @@ import webec.SecRole
 @Secured(SecRole.ADMIN)
 class AppController {
 
-    static List<Integer> tss = new ArrayList<>()
-
     def index() {
+
+        Professor p
+        Student   s = new Student(name: "s0").save(flush: true, failOnError: true)
+        Module    m
+        int       vote
 
         // Prevent saving of a new rating on initial load when no values are submitted
         if(null != params.get("professor")) {
-            Professor p = Professor.findByName(params.get("professor"))
-            Module    m = Module.findByTitle(params.get("module"))
-            int    vote = Integer.valueOf(params.get("vote"))
+            p = Professor.findByName(params.get("professor"))
+            m = Module.findByTitle(params.get("module"))
+            vote = Integer.valueOf(params.get("vote"))
 
             // Default student before implementing authentication and authorization
-            Student s = new Student(name: "s0").save(flush: true, failOnError: true)
+            s = new Student(name: "s0").save(flush: true, failOnError: true)
 
             Rating r = new Rating(module: m, professor: p, student: s, vote: vote )
             r.save(flush: true, failOnError: true)
@@ -50,17 +53,6 @@ class AppController {
             t.voteValue = Rating.findAllByModuleAndProfessor(t.module, t.professor).vote.sum()
         }
 
-        render(view:'index', model:[student: "Toni", teachings: Teaching, ratings: Rating])
+        render(view:'index', model:[student: s.name, teachings: Teaching.all, ratings: Rating.all.size()])
     }
 }
-
-// System.out.println("Professor: " + p.name)
-// System.out.println("Module: " + m.title)
-// System.out.println("Vote: " + vote)
-
-// Map<Teaching, Integer> teachingUpvotes = new HashMap<>()
-
-// for(Teaching t: Teaching.all) {
-//     teachingUpvotes.put(t, Rating.findAllByModuleAndProfessor(m, p).vote.stream().mapToInt({i -> i.intValue()}).sum())
-// }
-
