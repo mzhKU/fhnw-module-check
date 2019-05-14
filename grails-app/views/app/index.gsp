@@ -11,12 +11,6 @@
     <head>
         <meta name="layout" content="main"/>
         <title>Home Page</title>
-
-        <style>
-            ul {
-                list-style: none;
-            }
-        </style>
     </head>
     <body>
 
@@ -28,7 +22,7 @@
 
         <main class="container">
 
-            <table>
+            <table class="row">
                 <tr>
                     <th>Module</th>
                     <th>Professor</th>
@@ -62,7 +56,6 @@
             <div class="row">
                 <p>Total number of ratings: ${ratings.all.size()}</p>
             </div>
-
         </main>
     </body>
 </html>
