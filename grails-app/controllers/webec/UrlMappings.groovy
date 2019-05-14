@@ -9,6 +9,7 @@ class UrlMappings {
             }
         }
 
+
         // "/"(view:"/index")
         "/"(controller: "app")
         "/about"(view: "/description")

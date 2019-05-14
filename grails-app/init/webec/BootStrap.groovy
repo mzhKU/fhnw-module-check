@@ -2,13 +2,28 @@ package webec
 
 import webec.Module
 import webec.Professor
+import webec.SecRole
+import webec.SecUser
+import webec.SecUserSecRole
 
 class BootStrap {
 
     def init = { servletContext ->
 
         // Guard clause: prevent bootstrap objects in production
-        // if(Environment.current == Environment.PRODUCTION) return;
+
+
+        SecRole adminRole = save(SecRole.findOrCreateWhere(authority: 'ROLE_ADMIN'))
+
+        if(Environment.current == Environment.PRODUCTION) return;
+
+        SecUser testUser = save(new SecUser(username: 'me', password: '1234'))
+        SecUserSecRole.create(testUser, adminRole, true)
+
+
+        assert SecRole.count() == 1
+        assert SecUser.count() == 1
+        assert SecUserSecRole.count() == 1
 
         Professor p1 = new Professor(name: "Tom").save(flush: true, failOnError: true)
         Professor p2 = new Professor(name: "Tim").save(flush: true, failOnError: true)
