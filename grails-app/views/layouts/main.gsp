@@ -31,6 +31,11 @@
             <div class="navbar-collapse collapse" aria-expanded="false" style="height: 0.8px;">
                 <ul class="nav navbar-nav navbar-right">
                     <g:pageProperty name="page.nav" />
+                    <li><a href="/">Overview</a></li>
+                    <li><a href="/module">Module Controller</a></li>
+                    <li><a href="/professor">Professor Controller</a></li>
+                    <li><a href="/rating">Ratings List</a></li>
+                    <li><a href="/about">Description</a></li>
                 </ul>
             </div>
         </div>
