@@ -36,6 +36,8 @@
                     <li><a href="/professor">Professor Controller</a></li>
                     <li><a href="/rating">Ratings List</a></li>
                     <li><a href="/about">Description</a></li>
+                    <li><a href="/teaching">Teaching</a></li>
+                    <li><a href="/logout">Logout</a></li>
                 </ul>
             </div>
         </div>

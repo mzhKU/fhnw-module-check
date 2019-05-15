@@ -53,6 +53,6 @@ class AppController {
             t.voteValue = Rating.findAllByModuleAndProfessor(t.module, t.professor).vote.sum()
         }
 
-        render(view:'index', model:[student: s.name, teachings: Teaching.all, ratings: Rating.all.size()])
+        render(view:'index', model:[studentName: s.name, teachings: Teaching.all, numberOfRatings: Rating.all.size()])
     }
 }

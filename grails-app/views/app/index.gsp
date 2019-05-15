@@ -16,7 +16,7 @@
 
         <header class="container">
             <div class="row">
-                <p>User: ${studentName}</p>
+                <p>User [NAME]</p>
             </div>
         </header>
 
@@ -54,7 +54,7 @@
                 </g:each>
             </table>
             <div class="row">
-                <p>Total number of ratings: ${numberOfRatings}</p>
+                <p>Total number of ratings: [NUMBER]</p>
             </div>
         </main>
     </body>
