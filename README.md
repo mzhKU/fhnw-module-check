@@ -28,8 +28,15 @@ project description:      (if other than `index.html` in project root directory)
 External contributions:
 
 Other comments: 
+There would be a lot to do and I really hope to find time for it:
+- the most important thing that you can only vote once
+- rate modules by documents, assignments, time requirements
+- ratings should be by semester
+- commenting and discussion of modules
 
 I'm particular proud of:
+- it has security
+- the teaching domain combining the module and the professor domain
 
 
 ## Project grading 
