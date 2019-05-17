@@ -17,10 +17,10 @@ class RatingSpec extends Specification implements DomainUnitTest<Rating> {
 
         // ---------- Test 1 --------------------------------------------------------
         when: "A rating has a unique combination of prof student module vote"
-        def  rating01 = new Rating(professor: p1, student: s1, module: m1, upvote: true)
+        def  rating01 = new Rating(professor: p1, student: s1, module: m1, vote: 1)
 
         then: "it is a valid instances"
-        rating01.validate(['upvote'])
+        rating01.validate(['vote'])
 
         and: "can be saved"
         rating01.save()
@@ -32,22 +32,22 @@ class RatingSpec extends Specification implements DomainUnitTest<Rating> {
 
         // ---------- Test 2 --------------------------------------------------------
         when: "A second rating has the same parameters"
-        def rating02 = new Rating(professor: p1, student: s1, module: m1, upvote: true)
+        def rating02 = new Rating(professor: p1, student: s1, module: m1, vote: 1)
 
         and: "they it is saved"
         rating02.save()
 
         then: "the upvote value of the second rating is not valid"
-        !rating02.validate(['upvote'])
+        !rating02.validate(['vote'])
         // ----------------------------------------------------------------------------
 
 
         // ---------- Test 3 --------------------------------------------------------
         when: "A third rating has a different professor"
-        def rating03 = new Rating(professor: p2, student: s1, module: 1, upvote: true)
+        def rating03 = new Rating(professor: p2, student: s1, module: 1, vote: 1)
 
         then: "it is valid"
-        rating03.validate(['upvote'])
+        rating03.validate(['vote'])
 
         and: "it can be saved"
         rating03.save()

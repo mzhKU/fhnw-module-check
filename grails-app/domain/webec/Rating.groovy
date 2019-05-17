@@ -14,6 +14,6 @@ class Rating {
 
     static constraints = {
         // upvote(unique: ['professor', 'student', 'module'])
-        // vote(unique: ['professor', 'student', 'module'])
+        vote(unique: ['professor', 'student', 'module'])
     }
 }
