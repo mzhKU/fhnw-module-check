@@ -13,3 +13,4 @@ target/
 .settings
 .classpath
 *xlsx*
+notes-graded.txt

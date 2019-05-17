@@ -11,12 +11,13 @@ class UrlMappings {
 
 
         // "/"(view:"/index")
-        "/"(controller: "app")
-        "/about"(view: "/description")
-        "/module"(controller: "module")
+        "/"(         controller: "app")
+        "/module"(   controller: "module")
         "/professor"(controller: "professor")
-        "/rating"(controller: "rating")
-        "500"(view:'/error')
-        "404"(view:'/notFound')
+        "/rating"(   controller: "rating")
+        "/teaching"( controller: "teaching")
+        "/about"(    view:       "/description")
+        "500"(       view:       '/error')
+        "404"(       view:       '/notFound')
     }
 }

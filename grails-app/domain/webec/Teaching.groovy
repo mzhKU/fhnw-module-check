@@ -1,5 +1,8 @@
 package webec
 
+import grails.rest.Resource
+
+@Resource(uri="/teaching")
 class Teaching {
 
     Professor professor
