@@ -360,7 +360,7 @@ if (typeof jQuery === 'undefined') {
 
   Carousel.prototype.getItemIndex = function (item) {
     this.$items = item.parent().children('.item')
-    return this.$items.index(item || this.$active)
+    return this.$items.delete(item || this.$active)
   }
 
   Carousel.prototype.getItemForDirection = function (direction, active) {
