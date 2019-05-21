@@ -6,7 +6,7 @@ class TeachingController {
 
     static allowedMethods = [
             index: "GET",
-            delete: "POST"
+            delete: "DELETE"
     ]
 
 
@@ -18,7 +18,8 @@ class TeachingController {
     def delete(Long id) {
         System.out.println("Delete teaching id: " + id)
         def teaching = Teaching.get(id)
-        teaching.delete()
+        teaching.delete flush: true, failOnError: true
+
         redirect(action: 'index')
     }
 

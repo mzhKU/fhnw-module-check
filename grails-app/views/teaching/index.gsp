@@ -31,7 +31,7 @@
                 <td>${t.module.title}</td>
                 <td>${t.professor.name}</td>
                 <td>
-                    <g:form controller="teaching" action="delete" id="${t.id}" method="POST">
+                    <g:form controller="teaching" action="delete" id="${t.id}" method="DELETE">
                         <g:submitButton name="submit" value="Delete"></g:submitButton>
                     </g:form>
                 </td>

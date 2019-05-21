@@ -16,6 +16,7 @@ class UrlMappings {
         "/professor"(controller: "professor")
         "/rating"(   controller: "rating")
         "/teaching"( controller: "teaching")
+        "/teaching/edit"(view: "teaching/edit")
         "/about"(    view:       "/description")
         "500"(       view:       '/error')
         "404"(       view:       '/notFound')
