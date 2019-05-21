@@ -19,6 +19,7 @@
 <main class="container">
     <table class="row">
         <tr>
+            <th>Teaching Id</th>
             <th>Module</th>
             <th>Professor</th>
             <th>Delete</th>
@@ -26,6 +27,7 @@
 
         <g:each var="t" in="${teachings}">
             <tr>
+                <td><a href="teaching/${t.id}">${t.id}</a></td>
                 <td>${t.module.title}</td>
                 <td>${t.professor.name}</td>
                 <td>
