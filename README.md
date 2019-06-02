@@ -38,7 +38,30 @@ I'm particular proud of:
 - it has security
 - the teaching domain combining the module and the professor domain
 
-
 ## Project grading 
 
-< to be filled by lecturer>
+Anemic [index.html](index.html) found. It is valid and it does contain _semantic_ elements. More information
+could have been put there, like how to login (what are the different credentials?) and that _wrappers_
+scripts have been modified (making in my environment `./grailsw run-app` resp. `./grailsw test-app` failing).
+
+Application works fine. Validation on **Module** and **Student** could be improved: their name could be _empty_ and their deletion
+does NOT work because of their eventual reference in **Rating**.
+
+#### Features
+
+* **Spring Security**
+* **CRUD** operations for four domain classes 
+* Data setup in bootstrap.
+
+#### Engineering
+
+* Very good git log, good distribution over the available time.
+* **HTML** validity has some issues
+* Comments are practically NOT present
+* Naming is good
+* NOT much external dependencies than the ones coming along with the framework
+
+Congratulations! You took advantage of framework's features to implement a functional, 
+security-enabled, database-backed, web application from scratch on your own.
+
+Grade: **5.4**
