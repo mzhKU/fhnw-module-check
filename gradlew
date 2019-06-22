@@ -84,7 +84,7 @@ Please set the JAVA_HOME variable in your environment to match the
 location of your Java installation."
 fi
 
-JAVACMD="/usr/lib/jvm/jdk1.8.0_211/bin/java"
+# JAVACMD="/usr/lib/jvm/jdk1.8.0_211/bin/java"
 
 
 # Increase the maximum file descriptors if we can.
